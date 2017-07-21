@@ -1,3 +1,4 @@
+var EC = protractor.ExpectedConditions;
 var home_po = require("../pages/home.po.js");
 var locator = home_po.locators;
 
@@ -5,7 +6,8 @@ describe('WH test suite', function() {
 
   it("Open home page", function() {
     home_po.go();
-    browser.driver.sleep(5000);
+    browser.wait(EC.visibilityOf(locator.search_btn), 10000);
+
   });
 
   it("Click on Magnifier button", function() {
@@ -17,20 +19,20 @@ describe('WH test suite', function() {
   it("Search for „Mayfair Roulette” game", function() {
     locator.search_input.click();
     locator.search_input.sendKeys('Mayfair Roulette');
-    browser.driver.sleep(3000);
+    browser.wait(EC.visibilityOf(locator.search_result_title), 10000);
     expect(locator.search_result_title.isDisplayed()).toBe(true);
   });
 
   it("Hover over", function() {
     browser.actions().mouseMove(locator.game_block).perform();
-    browser.driver.sleep(3000);
+    browser.wait(EC.visibilityOf(locator.play_btn), 10000);
     expect(locator.play_btn.isDisplayed()).toBe(true);
-    //browser.actions().mouseMove(element(by.css('.slider.closed'))).perform();
+
   });
 
   it("Click on Play button", function() {
     locator.play_btn.click();
-    browser.driver.sleep(3000);
+    browser.wait(EC.visibilityOf(locator.login_form), 10000);
     expect(locator.login_form.isDisplayed()).toBe(true);
   })
 
