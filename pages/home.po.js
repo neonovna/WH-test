@@ -19,7 +19,6 @@ module.exports = {
   get_game_block_by_name: function(name) {
     var m = element(by.xpath("//img[@alt='" + name + "']"));
     return m;
-    console.log(m);
   }
 
 }

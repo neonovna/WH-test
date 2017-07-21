@@ -1,3 +1,18 @@
+var JasmineHtmlReporter = require('protractor-jasmine2-html-reporter');
+var reportConfig = {
+  savePath: './reports',
+  screenshotsFolder: 'screenshots',
+  takeScreenshots: true,
+  takeScreenshotsOnlyOnFailures: false,
+  fixedScreenshotName: true,
+  fileName: 'Report',
+  fileNamePrefix: '_',
+  fileNameSuffix: '_',
+  fileNameSeparator: '_',
+  fileNameDateSuffix: true,
+  showPassed: true,
+};
+
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
 
@@ -15,7 +30,9 @@ exports.config = {
   },
 
   onPrepare: function() {
-    //maximize window
     browser.driver.manage().window().maximize();
+    jasmine.getEnv().addReporter(
+      new JasmineHtmlReporter(reportConfig)
+    );
   }
 }
