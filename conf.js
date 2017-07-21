@@ -4,7 +4,7 @@ exports.config = {
   framework: 'jasmine2',
 
   suites: {
-    get: './practical/browser.js'
+    get: './tests/whtest.js'
   },
 
   capabilities: {
@@ -12,5 +12,10 @@ exports.config = {
     'chromeOptions': {
       'args': ['no-sandbox']
     }
+  },
+
+  onPrepare: function() {
+    //maximize window
+    browser.driver.manage().window().maximize();
   }
 }
